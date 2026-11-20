@@ -11,19 +11,16 @@ print("Dataset shape:", iris.data.shape)
 
 ##using pandas
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+iris = load_iris()
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+df["species"] = [iris.target_names[i] for i in iris.target]
 
-from sklearn.model_selection import train_test_split
-from sklearn.pipeline import Pipeline
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression
+# Show the first 10 rows
+display(df.head(10))
 
-from sklearn.metrics import (
-    mean_absolute_error,
-    mean_squared_error,
-    r2_score
-)
+# Corrected 'tile' to 'tail' to show the last 10 rows
+display(df.tail(10))
 
-print("All libraries imported successfully!")
+# Corrected spelling from 'discribe' to 'describe'
+display(df.describe())
